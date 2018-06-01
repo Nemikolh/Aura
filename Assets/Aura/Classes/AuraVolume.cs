@@ -376,13 +376,25 @@ namespace AuraAPI
         #endregion
 
         #region GameObject constructor
-#if UNITY_EDITOR /// <summary>
-/// Generic method for crating a GameObject with a AuraVolume component assigned
-/// </summary>
-/// <param name="menuCommand">Data relative to the invoked menu</param>
-/// <param name="name">Name of the created GameObject</param>
-/// <param name="shape">Desired volume shape</param>
-        private static void CreateGameObject(MenuCommand menuCommand, string name, VolumeTypeEnum shape)
+#if UNITY_EDITOR
+        /// <summary>
+        /// Generic method for crating a GameObject with a AuraVolume component assigned
+        /// </summary>
+        /// <param name="name">Name of the created GameObject</param>
+        /// <param name="shape">Desired volume shape</param>
+        /// <returns>The created AuraVolume gameObject</returns>
+        public static GameObject CreateGameObject(string name, VolumeTypeEnum shape)
+        {
+            return CreateGameObject(new MenuCommand(null), name, shape);
+        }
+        /// <summary>
+        /// Generic method for crating a GameObject with a AuraVolume component assigned
+        /// </summary>
+        /// <param name="menuCommand">Data relative to the invoked menu</param>
+        /// <param name="name">Name of the created GameObject</param>
+        /// <param name="shape">Desired volume shape</param>
+        /// <returns>The created AuraVolume gameObject</returns>
+        private static GameObject CreateGameObject(MenuCommand menuCommand, string name, VolumeTypeEnum shape)
         {
             GameObject newGameObject = new GameObject(name);
             GameObjectUtility.SetParentAndAlign(newGameObject, menuCommand.context as GameObject);
@@ -391,7 +403,7 @@ namespace AuraAPI
 
             newGameObject.AddComponent<AuraVolume>();
             newGameObject.GetComponent<AuraVolume>().volumeShape.shape = shape;
-            
+
             newGameObject.GetComponent<AuraVolume>().volumeShape.fading.falloffExponent = 2.75f;
             newGameObject.GetComponent<AuraVolume>().volumeShape.fading.xPositiveCubeFade = 0.25f;
             newGameObject.GetComponent<AuraVolume>().volumeShape.fading.xNegativeCubeFade = 0.25f;
@@ -415,12 +427,12 @@ namespace AuraAPI
 
             newGameObject.GetComponent<AuraVolume>().noiseMask.speed = 0.125f;
             newGameObject.GetComponent<AuraVolume>().noiseMask.transform.scale = Vector3.one;
-            
+
             newGameObject.GetComponent<AuraVolume>().density.injectionParameters.textureMaskLevelParameters.SetDefaultValues();
             newGameObject.GetComponent<AuraVolume>().density.injectionParameters.noiseMaskLevelParameters.SetDefaultValues();
             newGameObject.GetComponent<AuraVolume>().density.injectionParameters.enable = true;                                         // To have something visible when a volume is added
             newGameObject.GetComponent<AuraVolume>().density.injectionParameters.strength = 1;                                          // To have something visible when a volume is added
-            
+
             newGameObject.GetComponent<AuraVolume>().anisotropy.injectionParameters.textureMaskLevelParameters.SetDefaultValues();
             newGameObject.GetComponent<AuraVolume>().anisotropy.injectionParameters.noiseMaskLevelParameters.SetDefaultValues();
             newGameObject.GetComponent<AuraVolume>().anisotropy.injectionParameters.strength = 0.1f;
@@ -429,7 +441,9 @@ namespace AuraAPI
             newGameObject.GetComponent<AuraVolume>().color.injectionParameters.noiseMaskLevelParameters.SetDefaultValues();
             newGameObject.GetComponent<AuraVolume>().color.injectionParameters.enable = true;                                           // To have something visible when a volume is added
             newGameObject.GetComponent<AuraVolume>().color.injectionParameters.strength = 1;                                            // To have something visible when a volume is added
-            newGameObject.GetComponent<AuraVolume>().color.color = UnityEngine.Random.ColorHSV(0,1,1,1,1,1);                            // To have something visible when a volume is added
+            newGameObject.GetComponent<AuraVolume>().color.color = UnityEngine.Random.ColorHSV(0, 1, 1, 1, 1, 1);                            // To have something visible when a volume is added
+
+            return newGameObject;
         }
 
         /// <summary>
