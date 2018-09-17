@@ -25,7 +25,7 @@ Shader "Hidden/TerrainEngine/BillboardTree"
 			#include "UnityCG.cginc"
 			#include "TerrainEngine.cginc"
 			//For Aura
-			#include "../Aura/Shaders/Aura.cginc"
+			#include "../../Aura.cginc"
  
 			struct v2f
 			{
