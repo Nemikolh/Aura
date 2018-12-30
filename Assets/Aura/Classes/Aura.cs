@@ -397,7 +397,7 @@ namespace AuraAPI
             Matrix4x4 tmp = Gizmos.matrix;
             Gizmos.matrix = component.GetComponent<Camera>().transform.localToWorldMatrix;
             Gizmos.color = new Color( 0, 1, 1, opacity);
-            Gizmos.DrawFrustum(Vector3.zero, component.GetComponent<Camera>().fieldOfView, component.frustum.settings.farClipPlaneDistance, component.GetComponent<Camera>().nearClipPlane, component.GetComponent<Camera>().aspect);
+            Gizmos.DrawFrustum(component.GetComponent<Camera>().transform.position, component.GetComponent<Camera>().fieldOfView, component.frustum.settings.farClipPlaneDistance, component.GetComponent<Camera>().nearClipPlane, component.GetComponent<Camera>().aspect);
             Gizmos.matrix = tmp;
         }
     }
