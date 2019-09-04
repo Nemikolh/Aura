@@ -158,9 +158,7 @@ For several reasons :
  - I just want to make the Unity community thrive and make Unity better on my own level.
 
 ### Can we make donations?
-I didn’t expect that, thank you!<br />
-You can click on the following button for making a donation via Paypal.<br />
-[![You can click on the following button for making a donation via Paypal.](https://www.paypalobjects.com/en_US/GB/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=RFCCD4V4LLQ6U "")
+**Snipped** Check out the author's page for info.
 
 ### Will Aura’s development be continued?
 Hopefully yes! At least until Unity drops the legacy lighting system. Furthermore, I still have a bunch of feature ideas to implement, fixes and todos.
